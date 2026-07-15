@@ -10,9 +10,9 @@ const NavBarLogin = () => {
     <div>
         <nav className="navbar navbar-expand-lg bg-dark ">
             <div className="container">
-                <Link className="navbar-brand" to="/">
+                <a className="navbar-brand" href="/">
                     <img src={logo} className='logo' alt="logp" />
-                </Link>
+                </a>
                 <button className="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
                 </button>
@@ -26,14 +26,14 @@ const NavBarLogin = () => {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
 
                     <div className='d-flex gap-3 justify-content-center align-items-center'>
-                        <Link className='d-flex justify-content-center mt-2 align-items-center gap-1 text-white'>
+                        <a href='/login' className='d-flex justify-content-center mt-2 align-items-center gap-1 text-white'>
                             <img src={login} className='login-img' alt="" />
                             <p>دخول</p>
-                        </Link>
-                        <Link className='d-flex justify-content-center mt-2 align-items-center gap-1 text-white'>
+                        </a>
+                        <a href='/cart' className='d-flex justify-content-center mt-2 align-items-center gap-1 text-white'>
                             <img src={cart} className='login-img' alt="" />
                             <p>العربه</p>
-                        </Link>
+                        </a>
                     </div>
 
                 </div>

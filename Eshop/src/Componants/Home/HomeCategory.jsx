@@ -12,7 +12,7 @@ const HomeCategory = () => {
     <div>
         <div className="container py-3">
 
-            <SubTitle title='التصنيفات' btnTitle='المزيد'/>
+            <SubTitle title='التصنيفات' btnTitle='المزيد' pathTitle='/allcategory'/>
 
             <div className="row d-flex justify-content-between">
             <CategoryCard  title='اجهزه منزليه' img={clothes} background='#f4dba4' />

@@ -1,6 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-const SubTitle = ({title , btnTitle}) => {
+const SubTitle = ({title , btnTitle ,pathTitle}) => {
   return (
     <div className='d-flex justify-content-between align-items-center'>
 
@@ -10,7 +11,9 @@ const SubTitle = ({title , btnTitle}) => {
 
         {
             btnTitle ? (
-                <div className="shopping-now">{btnTitle}</div>
+                <Link to={`${pathTitle}`} style={{textDecoration:'none'}}>
+                    <div className="shopping-now">{btnTitle}</div>
+                </Link>
             ) : null
         }
 

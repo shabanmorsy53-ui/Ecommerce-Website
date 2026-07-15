@@ -8,7 +8,7 @@ import SubTitle from '../Utility/SubTitle'
 const BrandCardContainer = () => {
   return (
     <div className='container'>
-        <SubTitle title='اشهر الماركات' btnTitle='المزيد'/>
+        <SubTitle title='اشهر الماركات' btnTitle='المزيد' pathTitle='/allbrand'/>
         <div className="row mx-3">
             <BrandCard brandImage={brandImage3}/>
             <BrandCard brandImage={brandImage2}/>
