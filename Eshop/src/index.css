@@ -57,6 +57,15 @@ body {
   height: "296px";
   width: 294.26px;
 }
+
+.sub-text{
+  color: #915970;
+  font-family: Almarai;
+  font-size: 24px;
+  letter-spacing: 0;
+  line-height: 32px;
+}
+
 .slider-title {
   color: #915970;
   font-family: Almarai;
@@ -157,6 +166,29 @@ body {
 .rate{
   width: 20px;
 }
+
+.box{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: red;
+}
+
+.box:nth-of-type(1){
+  background-color: red;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.box:nth-of-type(2){
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.box:nth-of-type(3){
+  background-color: black;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
 /* end of card style */
 .shopping-now {
   padding: 5px;
@@ -681,3 +713,60 @@ body {
   text-align: center;
 }
 /* end filter */
+
+.payment1{
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+.sidebar{
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+.sidebar .child{
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.sidebar .child:hover{
+  background-color: black;
+  color: #fff;
+}
+
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+
+.swipper-gallery {
+  width: 100%;
+  height: 400px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+.swipper-gallery .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.swipper-gallery .swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.rate-dev{
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+}

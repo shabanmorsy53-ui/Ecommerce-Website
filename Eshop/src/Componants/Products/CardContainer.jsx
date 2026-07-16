@@ -8,7 +8,7 @@ const CardContainer = ({title,btnTitle}) => {
     <div>
         <div className="container my-4">
 
-            <SubTitle title={title} btnTitle={btnTitle}/>
+            <SubTitle title={title} btnTitle={btnTitle} pathTitle='/product'/>
 
             <div className="row m-3">
 

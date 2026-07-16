@@ -1,13 +1,20 @@
 import React from 'react'
-import heart from '../../Images/fav-Off.png'
-import rate from '../../Images/rate.png'
 import { Link } from 'react-router-dom'
+import rate from '../../Images/rate.png'
+import heart from '../../Images/fav-Off.png'
+import img from '../../Images/labtop.png'
 
-const ProductCard = ({img , title }) => {
+
+const AdminAllProductCard = () => {
   return (
-    <div className='col-6 col-md-4 col-lg-3 my-2'>
+    <div className='col-sm-12 col-md-3 col-lg-4 mb-3'>
+
 
         <div className="card " style={{width: "100%" , boxShadow:'0 2px 2px 0 rgba(151,151,151,0.5)', border:'none' , backgroundColor:'#ffffff', borderRadius:'8px'}}>
+            <div className="d-flex justify-content-between p-2">
+                <span className='item-delete-edit'>تعديل</span>
+                <span className='item-delete-edit'>ازاله</span>
+            </div>
             <Link to='/product/:id'>
                <img src={img} className="card-img-top" alt="card"/>
             </Link>
@@ -41,4 +48,4 @@ const ProductCard = ({img , title }) => {
   )
 }
 
-export default ProductCard
+export default AdminAllProductCard
