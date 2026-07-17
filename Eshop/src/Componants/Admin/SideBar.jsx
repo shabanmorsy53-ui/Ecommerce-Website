@@ -30,13 +30,17 @@ const SideBar = () => {
                 </div>
             </Link>
 
-            <div className='child border-bottom border-1 border-dark  text-center p-3'>
-                اضف تصنيف فرعي
-            </div>
+            <Link to='/admin/subctegory' style={{textDecoration:'none', color:'black'}}>
+                <div className='child border-bottom border-1 border-dark  text-center p-3'>
+                    اضف تصنيف فرعي
+                </div>
+            </Link>
 
+            <Link to='/admin/addproduct' style={{textDecoration:'none', color:'black'}}>
             <div className='child border-bottom border-1 border-dark  text-center p-3'>
                 اضف منتج
             </div>
+            </Link>
 
         </div>
     </div>

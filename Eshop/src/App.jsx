@@ -17,6 +17,13 @@ import AdminAllOrderPage from './Pages/Admin/AdminAllOrderPage'
 import AdminOrderDetalisPage from './Pages/Admin/AdminOrderDetalisPage'
 import AdminBrandPage from './Pages/Admin/AdminBrandPage'
 import AdminCategoryPage from './Pages/Admin/AdminCategoryPage'
+import AdminSubCategoryPage from './Pages/Admin/AdminSubCategoryPage'
+import AdminAddProductPage from './Pages/Admin/AdminAddProductPage'
+import UserAllOrdersPage from './Pages/User/UserAllOrdersPage'
+import UserFavouriteProductPage from './Pages/User/UserFavouriteProductPage'
+import UserAddressPage from './Pages/User/UserAddressPage'
+import UserNewAddressPage from './Pages/User/UserNewAddressPage'
+import UserEditAddressPage from './Pages/User/UserEditAddressPage'
 
 function App() {
 
@@ -44,6 +51,13 @@ function App() {
         <Route path='/admin/order/:id' element={<AdminOrderDetalisPage/>}/>
         <Route path='/admin/allbrand' element={<AdminBrandPage/>}/>
         <Route path='/admin/category' element={<AdminCategoryPage/>}/>
+        <Route path='/admin/subctegory' element={<AdminSubCategoryPage/>}/>
+        <Route path='/admin/addproduct' element={<AdminAddProductPage/>}/>
+        <Route path='/user/allorder' element={<UserAllOrdersPage/>}/>
+        <Route path='/user/favourite' element={<UserFavouriteProductPage/>}/>
+        <Route path='/user/address' element={<UserAddressPage/>}/>
+        <Route path='/user/newaddress' element={<UserNewAddressPage/>}/>
+        <Route path='/user/edit' element={<UserEditAddressPage/>}/>
 
 
       </Routes>

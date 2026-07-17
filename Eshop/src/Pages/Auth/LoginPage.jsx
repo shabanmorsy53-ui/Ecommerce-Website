@@ -19,8 +19,9 @@ const LoginPage = () => {
 
       </div>
 
-      <Link style={{textDecoration:'none', color:'red'}} to='/admin/product'>اضغط هنا</Link>
+      <Link style={{textDecoration:'none', color:'red',display:'block'}} to='/admin/product'>اضغط هنا</Link>
 
+      <Link style={{textDecoration:'none', color:'red'}} to='/user/allorder'>user هنا</Link>
         
     </div>
   )
