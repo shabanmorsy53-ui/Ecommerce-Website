@@ -23,9 +23,11 @@ const UserSideBar = () => {
             </div>
         </Link>
 
-        <div className=' border-1 border-bottom border-dark text-center child p-3'>
-             الملف الشخصي
-        </div>
+        <Link to='/user/profile' style={{textDecoration:'none', color:'black'}}>
+            <div className=' border-1 border-bottom border-dark text-center child p-3'>
+                الملف الشخصي
+            </div>
+        </Link>
 
     </div>
   )

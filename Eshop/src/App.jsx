@@ -24,6 +24,7 @@ import UserFavouriteProductPage from './Pages/User/UserFavouriteProductPage'
 import UserAddressPage from './Pages/User/UserAddressPage'
 import UserNewAddressPage from './Pages/User/UserNewAddressPage'
 import UserEditAddressPage from './Pages/User/UserEditAddressPage'
+import UserProfilePage from './Pages/User/UserProfilePage'
 
 function App() {
 
@@ -58,6 +59,7 @@ function App() {
         <Route path='/user/address' element={<UserAddressPage/>}/>
         <Route path='/user/newaddress' element={<UserNewAddressPage/>}/>
         <Route path='/user/edit' element={<UserEditAddressPage/>}/>
+        <Route path='/user/profile' element={<UserProfilePage/>}/>
 
 
       </Routes>
