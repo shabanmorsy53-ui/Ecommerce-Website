@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import SubTitle from '../Utility/SubTitle'
 import CategoryCard from '../Category/CategoryCard'
 import clothes from '../../Images/clothe.png'
@@ -6,8 +6,28 @@ import cat2 from '../../Images/cat2.png'
 import labtop from '../../Images/labtop.png'
 import sale from '../../Images/sale.png'
 import pic from '../../Images/pic.png'
+import { useDispatch, useSelector } from 'react-redux'
+import { getAllCategory } from '../../redux/actions/categoryAction'
+
 
 const HomeCategory = () => {
+
+    
+  const dispatch = useDispatch()
+
+  useEffect(()=>{
+    dispatch(getAllCategory())
+  },[])
+
+  const data = useSelector((state)=>state.allCategory.category)
+  const loading = useSelector((state)=>state.allCategory.loading)
+
+  const colors = ["#ffd3e8" , "#f4dba5" , "#55cfdf" , "#ff6262" , "#0034ff" ,"#ffd3e8"]
+
+  console.log(data);
+  console.log(loading);
+
+
   return (
     <div>
         <div className="container py-3">
@@ -15,12 +35,24 @@ const HomeCategory = () => {
             <SubTitle title='التصنيفات' btnTitle='المزيد' pathTitle='/allcategory'/>
 
             <div className="row d-flex justify-content-between">
-            <CategoryCard  title='اجهزه منزليه' img={clothes} background='#f4dba4' />
-            <CategoryCard  title='اجهزه منزليه' img={cat2} background='#f4dba4' />
-            <CategoryCard  title='اجهزه منزليه' img={pic} background='#f4dba4' />
-            <CategoryCard  title='اجهزه منزليه' img={labtop} background='#f4dba4' />
-            <CategoryCard  title='اجهزه منزليه' img={sale} background='#f4dba4' />
-            <CategoryCard  title='اجهزه منزليه' img={pic} background='#f4dba4' />
+
+              {
+                loading === false ?  (
+                data ? 
+                (
+                  data.slice(0,5).map((item,index)=>( <CategoryCard  title={item.name} img={clothes} background={colors[index]} key={index} />) )
+                )
+                 : 
+                (<h1>لايوجد تصنيفات لعرضها</h1>)) : 
+                (
+                  <div className="m-auto spinner-border text-primary" role="status">
+                    <span className=" visually-hidden">Loading...</span>
+                  </div>
+                )
+              }
+
+
+           
 
             </div>
 

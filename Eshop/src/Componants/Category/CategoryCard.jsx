@@ -2,7 +2,7 @@ import React from 'react'
 
 const CategoryCard = ({background , img , title}) => {
   return (
-    <div className='col-6 col-md-4 col-lg-2'>
+    <div className='col-6 col-md-4 my-4 col-lg-2'>
 
         <div className='allCard my-4 m-auto'>
 

@@ -9,11 +9,11 @@ export const getAllCategory = () => async(dispatch) => {
 
 
         const response = await useGetData('/categories?fields=name');
-        console.log(response.data);
+      
 
         dispatch({
             type: GET_ALL_CATEGORY,
-            payload : res.data,
+            payload : response.data,
         })
 
     }catch(e){
