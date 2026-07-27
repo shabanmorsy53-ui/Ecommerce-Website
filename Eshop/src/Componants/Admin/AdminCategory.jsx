@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import avatar from "../../Images/avatar (1).png";
 import { useDispatch, useSelector } from "react-redux";
 import { createCategory } from "../../redux/actions/categoryAction";
+import { ToastContainer, toast } from 'react-toastify';
 
 const AdminCategory = () => {
   const dispatch = useDispatch();
@@ -9,6 +10,12 @@ const AdminCategory = () => {
   const [img, setImge] = useState(avatar);
   const [name, setName] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [isPress, setIsPress] = useState(false);
+
+  const res = useSelector(state => state.allCategory.category)
+
+  console.log(res);
 
   const onImageChange = (event) => {
     if (event.target.files && event.target.files[0]) {
@@ -17,17 +24,51 @@ const AdminCategory = () => {
     }
   };
 
-  const onSubmitHandler = (e) => {
+  const onSubmitHandler = async (e) => {
     e.preventDefault();
+
+    if(name === '' || selectedFile === null){
+
+      notify('من فضلك اكمل البيانات','warn')
+
+      return;
+    }
 
     const formData = new FormData();
     formData.append("name", name);
     formData.append("image", selectedFile);
 
+    setLoading(true)
+    setIsPress(true)
+    await dispatch(createCategory(formData));
 
-    dispatch(createCategory(formData));
+    setLoading(false)
 
   };
+
+  useEffect(()=>{
+
+    if (loading === false) {
+
+      setImge(avatar);
+      setName("")
+      setSelectedFile(null)
+
+      console.log('تم الانتهاء');
+      setLoading(true)
+      setIsPress(false)
+
+      if(res.status === 201){
+        notify('تم الاضافه بنجاح', 'success')
+      }else(
+        notify('هناك مشكله في عملية الاضافه','error')
+      )
+      
+    }
+
+  },[loading])
+
+  const notify = (msg) => toast(msg);
 
   return (
     <div>
@@ -61,6 +102,12 @@ const AdminCategory = () => {
           حفظ التعديلات
         </button>
       </div>
+
+      {
+        isPress ? loading ? <h3>جاري االتحميل</h3> : <h3>تم الانتهاء</h3> : null
+      }
+
+      <ToastContainer />
     </div>
   );
 };
