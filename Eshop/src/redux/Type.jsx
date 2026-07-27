@@ -5,3 +5,6 @@ export const GET_ERROR = 'GET_ERROR'
 
 export const GET_ALL_BRAND = 'BRAND'
 export const CREATE_BRAND = 'CREATE_BRAND'
+
+
+export const CREATE_SUB_CATE = 'CREATE_SUB_CATE'

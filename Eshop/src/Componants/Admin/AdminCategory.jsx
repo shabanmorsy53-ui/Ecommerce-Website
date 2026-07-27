@@ -15,7 +15,7 @@ const AdminCategory = () => {
 
   const res = useSelector(state => state.allCategory.category)
 
-  console.log(res);
+  
 
   const onImageChange = (event) => {
     if (event.target.files && event.target.files[0]) {

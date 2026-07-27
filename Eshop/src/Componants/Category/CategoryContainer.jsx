@@ -20,6 +20,8 @@ const CategoryContainer = () => {
     },[])
   
     const data = useSelector((state)=>state.allCategory.category)
+
+    console.log(data);
     const loading = useSelector((state)=>state.allCategory.loading)
   
     const colors = ["#ffd3e8" , "#f4dba5" , "#55cfdf" , "#ff6262" , "#0034ff" ,"#ffd3e8"]
