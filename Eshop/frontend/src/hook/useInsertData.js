@@ -11,6 +11,12 @@ export const useInsertDataWithImage = async (url ,prams) => {
     return res.data
 }
 
+
+export const useInsertData = async (url ,prams) => {
+    const res = await baseUrl.post(url,prams);
+    return res.data
+}
+
 // export const useInsertDataWithImage = async (url, params) => {
 //   try {
 //     const config = {
@@ -27,10 +33,4 @@ export const useInsertDataWithImage = async (url ,prams) => {
 //     throw error;
 //   }
 // };
-
-export const useInsertData = async (url ,prams) => {
-    const res = await baseUrl.post(url,prams);
-    return res.data
-}
-
 // export default {useInsertData , useInsertDataWithImage} ;

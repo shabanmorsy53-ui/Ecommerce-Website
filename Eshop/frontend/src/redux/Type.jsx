@@ -8,3 +8,7 @@ export const CREATE_BRAND = 'CREATE_BRAND'
 
 
 export const CREATE_SUB_CATE = 'CREATE_SUB_CATE'
+
+export const CREATE_NEW_USER = 'CREATE_NEW_USER'
+
+export const LOGIN_USER = 'LOGIN_USER'
