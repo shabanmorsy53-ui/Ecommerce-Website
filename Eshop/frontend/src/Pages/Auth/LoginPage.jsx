@@ -50,17 +50,19 @@ const LoginPage = () => {
 
       if (data.token) {
         localStorage.setItem("tkn", data.token);
+        localStorage.setItem('user',JSON.stringify(data.data))
         notify("تم التسجيل بنجاح");
         setTimeout(() => {
-          navigate("/");
+          window.location.href = '/'
         }, 2000);
       }else{
-        localStorage.removeItem('token')
+        localStorage.removeItem('tkn')
       }
       
       
       if(data.data.error){
         notify(`${data.data.message}`)
+        localStorage.removeItem('tkn')
       }
     }
   }, [data]);
@@ -116,6 +118,11 @@ const LoginPage = () => {
           <p>ليس لديك حساب؟</p>
           <Link style={{ textDecoration: "none", color: "red" }} to="/register">
             اضغط هنا
+          </Link>
+        </div>
+        <div className="d-flex justify-content-center">
+          <Link style={{ textDecoration: "none", color: "red" }} to="/user/forget-password">
+             هل نسيت كلمة السر؟
           </Link>
         </div>
       </div>

@@ -1,7 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import deleteIcon from '../../Images/delete.png'
 
 const UserProfile = () => {
+
+    const [user , setUser] = useState('');
+
+    
+    useEffect(()=>{
+        if(localStorage.getItem('user') != null){
+            setUser(JSON.parse(localStorage.getItem('user')));
+        }
+        
+    },[])
+
   return (
     <div>
 
@@ -13,7 +24,7 @@ const UserProfile = () => {
 
                 <div className="d-flex gap-2">
                     <p className="fw-bold">الاسم</p>
-                    <span>احمد عبدالله</span>
+                    <span>{user.name}</span>
                 </div>
 
                 <div className="d-flex gap-2 align-items-center">
@@ -30,7 +41,7 @@ const UserProfile = () => {
 
                 <div className="d-flex gap-2">
                     <p className="fw-bold"> الايميل</p>
-                    <span> shabanmorsy@gmail.com</span>
+                    <span>{user.email}</span>
                 </div>
 
         </div>
