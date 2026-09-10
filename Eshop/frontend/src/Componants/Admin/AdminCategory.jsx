@@ -58,7 +58,7 @@ const AdminCategory = () => {
       setLoading(true)
       setIsPress(false)
 
-      if(res.status === 201){
+      if(res){
         notify('تم الاضافه بنجاح', 'success')
       }else(
         notify('هناك مشكله في عملية الاضافه','error')

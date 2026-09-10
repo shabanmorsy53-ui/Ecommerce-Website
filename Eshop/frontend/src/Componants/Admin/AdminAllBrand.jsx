@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import avatar from "../../Images/avatar (1).png";
 import { useDispatch, useSelector } from "react-redux";
-import { createCategory } from "../../redux/actions/categoryAction";
 import { ToastContainer, toast } from "react-toastify";
+import { createBrand } from "../../redux/actions/brandAction";
 
 const AdminAllBrand = () => {
   const dispatch = useDispatch();
@@ -39,7 +39,7 @@ const AdminAllBrand = () => {
 
     setLoading(true);
     setIsPress(true);
-    await dispatch(createCategory(formData));
+    await dispatch(createBrand(formData));
 
     setLoading(false);
   };
@@ -54,7 +54,9 @@ const AdminAllBrand = () => {
       setLoading(true);
       setIsPress(false);
 
-      if (res.status === 201) {
+      console.log(res);
+
+      if (res) {
         notify("تم الاضافه بنجاح", "success");
       } else notify("هناك مشكله في عملية الاضافه", "error");
     }

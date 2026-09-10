@@ -1,6 +1,9 @@
 import React from 'react'
 
 const CategoryCard = ({background , img , title}) => {
+
+  console.log(img);
+
   return (
     <div className='col-6 col-md-4 my-4 col-lg-2'>
 

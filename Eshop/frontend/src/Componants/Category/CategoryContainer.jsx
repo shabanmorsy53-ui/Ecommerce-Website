@@ -43,7 +43,7 @@ const CategoryContainer = () => {
                 loading === false ?  (
                 data ? 
                 (
-                  data.map((item,index)=>( <CategoryCard  title={item.name} img={clothes} background={colors[Math.floor(Math.random()*5)+1]} key={index} />) )
+                  data.map((item,index)=>( <CategoryCard  title={item.name} img={item.image} background={colors[Math.floor(Math.random()*5)+1]} key={index} />) )
                 )
                  : 
                 (<h1>لايوجد تصنيفات لعرضها</h1>)) : 

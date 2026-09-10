@@ -7,7 +7,6 @@ import cart from "../../Images/cart.png";
 const NavBarLogin = () => {
   const [user, setUser] = useState("");
 
-
   useEffect(() => {
     if (localStorage.getItem("user") != null) {
       setUser(JSON.parse(localStorage.getItem("user")));
@@ -17,7 +16,7 @@ const NavBarLogin = () => {
   const logout = () => {
     localStorage.removeItem("user");
     setUser("");
-    window.location.href = '/login'
+    window.location.href = "/login";
   };
 
   console.log(user);
@@ -71,21 +70,40 @@ const NavBarLogin = () => {
                   >
                     {user.name}
                   </a>
-                  <ul class="dropdown-menu">
-                    <li>
-                      <a class="dropdown-item" href="/user/profile">
-                        الصفحه الشخصيه
-                      </a>
-                    </li>
-                    <li>
-                      <hr class="dropdown-divider" />
-                    </li>
-                    <li>
-                      <a onClick={logout} class="dropdown-item" href="#">
-                        تسجيل خروج
-                      </a>
-                    </li>
-                  </ul>
+
+                  {user.role === "admin" ? (
+                    <ul className="dropdown-menu">
+                      <li>
+                        <a className="dropdown-item" href="/admin/product">
+                           لوحة التحكم
+                        </a>
+                      </li>
+                      <li>
+                        <hr className="dropdown-divider" />
+                      </li>
+                      <li>
+                        <a onClick={logout} className="dropdown-item" href="#">
+                          تسجيل خروج
+                        </a>
+                      </li>
+                    </ul>
+                  ) : (
+                    <ul className="dropdown-menu">
+                      <li>
+                        <a className="dropdown-item" href="/user/profile">
+                          الصفحه الشخصيه
+                        </a>
+                      </li>
+                      <li>
+                        <hr className="dropdown-divider" />
+                      </li>
+                      <li>
+                        <a onClick={logout} className="dropdown-item" href="#">
+                          تسجيل خروج
+                        </a>
+                      </li>
+                    </ul>
+                  )}
                 </li>
               ) : (
                 <a

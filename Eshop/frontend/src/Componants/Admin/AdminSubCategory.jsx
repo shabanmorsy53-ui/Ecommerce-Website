@@ -18,9 +18,13 @@ const AdminSubCategory = () => {
     },[])
   
     const data = useSelector((state)=>state.allCategory.category)
+
+    console.log(data);
   
 
     const subCategory = useSelector((state)=>state.subCategory.subCategory)
+
+    console.log(subCategory);
     
     const handleChange = (e) => {
       e.persist()
@@ -61,7 +65,7 @@ const AdminSubCategory = () => {
         setName('')
         setID('0')
 
-        if(subCategory.status === 201){
+        if(subCategory){
           notify('تمت الاضافه بنجاح')
         }else{
           notify('هناك مشكله في عملية الاضافه')
@@ -88,7 +92,7 @@ const AdminSubCategory = () => {
             <option value="0">التصنيف الرئيسي</option>
 
             {
-              data ? (data.map((item)=>( <option value={item._id} key={item._id}>{item.name}</option>))) : null
+              data ? (data?.map((item)=>( <option value={item._id} key={item._id}>{item.name}</option>))) : null
             }
           
         </select>

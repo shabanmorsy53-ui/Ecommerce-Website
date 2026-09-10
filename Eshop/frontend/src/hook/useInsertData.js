@@ -3,8 +3,11 @@ import baseUrl from "../Api/baseUrl";
 
 export const useInsertDataWithImage = async (url ,prams) => {
 
+    const token = localStorage.getItem('tkn');
+
     const config = {
-        headers: {'Content-Type' : 'multipart/form-data'}
+        headers: {'Content-Type' : 'multipart/form-data',Authorization : `Bearer ${token}`}
+        
     }
 
     const res = await baseUrl.post(url,prams,config);
@@ -13,7 +16,16 @@ export const useInsertDataWithImage = async (url ,prams) => {
 
 
 export const useInsertData = async (url ,prams) => {
-    const res = await baseUrl.post(url,prams);
+
+    const token = localStorage.getItem('tkn');
+
+    const config = {
+        headers:{
+            Authorization : `Bearer ${token}`
+        }
+    }
+
+    const res = await baseUrl.post(url,prams,config);
     return res.data
 }
 

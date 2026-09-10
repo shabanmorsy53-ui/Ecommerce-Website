@@ -30,7 +30,7 @@ const BrandCardContainer = () => {
           (
           data ? 
             (
-              data.map((item)=>( <BrandCard name={item.name} brandImage={brandImage2} key={item._id}/>) )
+              data.map((item)=>( <BrandCard name={item.name} brandImage={item.image} key={item._id}/>) )
             ):
             (<h3>لايوجد ماركات لعرضها</h3>)
           ):

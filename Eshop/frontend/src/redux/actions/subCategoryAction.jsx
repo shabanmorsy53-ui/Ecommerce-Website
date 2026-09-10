@@ -1,6 +1,5 @@
 
 
-import useGetData from "../../hook/useGetData";
 import {useInsertData} from '../../hook/useInsertData'
 import { CREATE_SUB_CATE , GET_ERROR , } from "../Type";
 
