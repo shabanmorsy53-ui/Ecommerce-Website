@@ -50,11 +50,11 @@ const AdminAllBrand = () => {
       setName("");
       setSelectedFile(null);
 
-      console.log("تم الانتهاء");
+
       setLoading(true);
       setIsPress(false);
 
-      console.log(res);
+
 
       if (res) {
         notify("تم الاضافه بنجاح", "success");

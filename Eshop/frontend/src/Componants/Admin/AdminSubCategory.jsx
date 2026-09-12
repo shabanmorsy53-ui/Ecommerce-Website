@@ -19,12 +19,12 @@ const AdminSubCategory = () => {
   
     const data = useSelector((state)=>state.allCategory.category)
 
-    console.log(data);
+
   
 
     const subCategory = useSelector((state)=>state.subCategory.subCategory)
 
-    console.log(subCategory);
+
     
     const handleChange = (e) => {
       e.persist()

@@ -54,7 +54,7 @@ const AdminCategory = () => {
       setName("")
       setSelectedFile(null)
 
-      console.log('تم الانتهاء');
+
       setLoading(true)
       setIsPress(false)
 

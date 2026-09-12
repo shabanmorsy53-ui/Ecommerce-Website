@@ -19,7 +19,7 @@ const NavBarLogin = () => {
     window.location.href = "/login";
   };
 
-  console.log(user);
+
 
   return (
     <div>
@@ -57,11 +57,11 @@ const NavBarLogin = () => {
             <div className="d-flex gap-3 justify-content-center align-items-center">
               {user != "" ? (
                 <li
-                  class="nav-item dropdown"
+                  className="nav-item dropdown"
                   style={{ display: "flex", alignItems: "center" }}
                 >
                   <a
-                    class="nav-link dropdown-toggle"
+                    className="nav-link dropdown-toggle"
                     href="#"
                     role="button"
                     data-bs-toggle="dropdown"

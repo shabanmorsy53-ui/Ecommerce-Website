@@ -1,5 +1,5 @@
 
-import  {CREATE_SUB_CATE, GET_ERROR}  from "../Type"
+import  {CREATE_SUB_CATE, GET_ERROR,GET_SUB_DEPENDED}  from "../Type"
 
 const initial = {
     subCategory : [],
@@ -12,6 +12,11 @@ const subCategoryReducer = (state = initial , action) => {
         case CREATE_SUB_CATE: 
         return {
             ...state,
+            subCategory:action.payload,
+            loading:false,
+        }
+        case GET_SUB_DEPENDED: 
+        return {
             subCategory:action.payload,
             loading:false,
         }
