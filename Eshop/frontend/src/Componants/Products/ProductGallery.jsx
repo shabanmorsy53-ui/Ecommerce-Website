@@ -7,14 +7,15 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
 
-const ProductGallery = () => {
+const ProductGallery = ({item}) => {
 
+  
 
   return (
     <div>
 
     <Swiper navigation={true} modules={[Navigation]}  loop={true} className="mySwiper swipper-gallery">
-        <SwiperSlide><img  src={mobile} alt="" /></SwiperSlide>
+        <SwiperSlide><img  src={`http://localhost:8000/products/${item.imageCover}`} alt="" /></SwiperSlide>
         <SwiperSlide><img  src={mobile1} alt="" /></SwiperSlide>
         <SwiperSlide><img src={mobile2} alt="" /></SwiperSlide>
       </Swiper>

@@ -1,9 +1,11 @@
 import React from 'react'
 import SubTitle from '../Utility/SubTitle'
 import ProductCard from './ProductCard'
-import cardImage from '../../Images/labtop.png'
+// import cardImage from '../../Images/labtop.png'
 
-const CardContainer = ({title,btnTitle}) => {
+const CardContainer = ({title,btnTitle,myProduct,all}) => {
+
+  console.log(myProduct);
   return (
     <div>
         <div className="container my-4">
@@ -12,10 +14,14 @@ const CardContainer = ({title,btnTitle}) => {
 
             <div className="row m-3">
 
-                <ProductCard title='labtop' img={cardImage} />
-                <ProductCard title='labtop' img={cardImage} />
-                <ProductCard title='labtop' img={cardImage} />
-                <ProductCard title='labtop' img={cardImage} />
+              {
+                myProduct ? (
+                  myProduct.map((item,index)=>(
+                    <ProductCard item={item} />
+                    
+                  ))
+                ) : null
+              }
 
             </div>
 

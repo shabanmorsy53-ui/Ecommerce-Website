@@ -1,11 +1,11 @@
 import React from "react";
 
-const ProductDetalisText = () => {
+const ProductDetalisText = ({item}) => {
   return (
     <div>
       <h4 className="sub-text">الالكترونيات...</h4>
       <div className="sub-tile">
-        ايفون XR بذاكره 170 جيجا بايت ويدعم تقنية 4GLTC
+        {item.description}
         <p className="card-rate">4.5</p>
       </div>
       <div className="d-flex gap-2">
