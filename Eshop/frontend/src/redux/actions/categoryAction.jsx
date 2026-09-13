@@ -1,7 +1,7 @@
 
 import useGetData from "../../hook/useGetData";
 import {useInsertDataWithImage} from '../../hook/useInsertData'
-import { GET_ALL_CATEGORY , GET_ERROR , CREATE_CATE} from "../Type";
+import { GET_ALL_CATEGORY , GET_ERROR , CREATE_CATE,GET_ONE_CATEGORY} from "../Type";
 
 
 export const getAllCategory = () => async(dispatch) => {
@@ -15,6 +15,29 @@ export const getAllCategory = () => async(dispatch) => {
 
         dispatch({
             type: GET_ALL_CATEGORY,
+            payload : response.data,
+        })
+
+    }catch(e){
+
+        dispatch({
+            type: GET_ERROR ,
+            payload : 'Error' + e,
+        })
+    }
+}
+
+export const getOneCategory = (id) => async(dispatch) => {
+
+    try{
+
+        // const res = await baseUrl.get('/categories?fields=name');
+
+        const response = await useGetData(`/categories/${id}`);
+        console.log(response.data);
+
+        dispatch({
+            type: GET_ONE_CATEGORY,
             payload : response.data,
         })
 

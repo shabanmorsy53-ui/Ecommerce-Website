@@ -3,7 +3,7 @@ import SubTitle from '../Utility/SubTitle'
 import ProductCard from './ProductCard'
 // import cardImage from '../../Images/labtop.png'
 
-const CardContainer = ({title,btnTitle,myProduct,all}) => {
+const CardContainer = ({title,btnTitle,myProduct}) => {
 
   console.log(myProduct);
   return (

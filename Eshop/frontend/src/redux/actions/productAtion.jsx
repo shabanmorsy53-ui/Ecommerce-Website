@@ -1,7 +1,7 @@
 
 import useGetData from '../../hook/useGetData';
 import {useInsertDataWithImage} from '../../hook/useInsertData'
-import { CREATE_PRODUCT , GET_ERROR ,GET_ALL_PRODUCT,GET_PRODUCT_DETALIS} from "../Type";
+import { CREATE_PRODUCT , GET_ERROR ,GET_ALL_PRODUCT,GET_PRODUCT_DETALIS,GET_PRODUCT_LIKE} from "../Type";
 
 // export const createProducts = (formData) => async(dispatch) => {
 
@@ -69,6 +69,24 @@ export const getOneProduct = (id) => async (dispatch) => {
 
     dispatch({
       type: GET_PRODUCT_DETALIS,
+      payload: response,
+    });
+  } catch (e) {
+    
+
+    dispatch({
+      type: GET_ERROR,
+      payload: e.response?.data || "Error",
+    });
+  }
+};
+
+export const getLikeProduct = (id) => async (dispatch) => {
+  try {
+    const response = await useGetData(`/products/?category=${id}`);
+
+    dispatch({
+      type: GET_PRODUCT_LIKE,
       payload: response,
     });
   } catch (e) {

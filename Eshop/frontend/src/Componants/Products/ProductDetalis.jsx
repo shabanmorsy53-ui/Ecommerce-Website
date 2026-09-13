@@ -4,6 +4,7 @@ import ProductDetalisText from './ProductDetalisText'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getOneProduct } from '../../redux/actions/productAtion'
+import { getOneCategory } from '../../redux/actions/categoryAction'
 
 const ProductDetalis = () => {
 
@@ -30,6 +31,25 @@ const ProductDetalis = () => {
 
   console.log(item);
 
+  // ===========================================================
+
+  const spaceficCat = useSelector((state) => state.allCategory.oneCategory);
+
+  console.log(spaceficCat);
+
+
+
+  useEffect(()=>{
+   
+    if(item.category){
+      
+      dispatch(getOneCategory(item.category))
+
+      
+    }
+  },[item])
+
+
   
 
 
@@ -41,7 +61,7 @@ const ProductDetalis = () => {
         </div>
 
         <div className="col-md-8 col-sm-12 px-3">
-            <ProductDetalisText item={item}/>
+            <ProductDetalisText category={spaceficCat} item={item}/>
         </div>
 
     </div>
