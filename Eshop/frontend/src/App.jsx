@@ -28,6 +28,7 @@ import UserProfilePage from './Pages/User/UserProfilePage'
 import ForgetPasswordPage from './Pages/Auth/ForgetPasswordPage'
 import VerfiyPasswordPage from './Pages/Auth/VerfiyPasswordPage'
 import ResetPasswordPage from './Pages/Auth/ResetPasswordPage'
+import AdminUpdateProductPage from './Pages/Admin/AdminUpdateProductPage'
 
 function App() {
 
@@ -66,6 +67,7 @@ function App() {
         <Route path='/user/forget-password' element={<ForgetPasswordPage/>}/>
         <Route path='/user/verify-code' element={<VerfiyPasswordPage/>}/>
         <Route path='/user/reset-password' element={<ResetPasswordPage/>}/>
+        <Route path='/admin/update/:id' element={<AdminUpdateProductPage/>}/>
 
 
       </Routes>

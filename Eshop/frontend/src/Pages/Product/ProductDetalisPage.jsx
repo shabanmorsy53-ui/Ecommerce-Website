@@ -54,7 +54,7 @@ const ProductDetalisPage = () => {
       <div className="container my-3">
         <ProductDetalis />
         <RateContainer />
-        <CardContainer myProduct={productLike.data.slice(0,4)} title=" المنتجات..." />
+        <CardContainer myProduct={productLike.data?.slice(0,4)} title=" المنتجات..." />
       </div>
     </div>
   );
