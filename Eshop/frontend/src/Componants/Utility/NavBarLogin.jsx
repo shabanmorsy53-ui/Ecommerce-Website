@@ -19,6 +19,23 @@ const NavBarLogin = () => {
     window.location.href = "/login";
   };
 
+  const [searchWord, setSearchWord] = useState(localStorage.getItem('word') || '');
+
+  useEffect(()=>{
+    
+    if(searchWord){
+      localStorage.setItem('word',searchWord)
+    }else{
+      localStorage.removeItem('word')
+    }
+
+    window.dispatchEvent(new Event('searchChanged'))
+  },[searchWord])
+
+
+  console.log(searchWord);
+    
+  
 
 
   return (
@@ -49,6 +66,8 @@ const NavBarLogin = () => {
                 type="search"
                 placeholder="بحث"
                 aria-label="Search"
+                onChange={(e)=> setSearchWord(e.target.value)}
+                value={searchWord}
               />
             </form>
           </div>

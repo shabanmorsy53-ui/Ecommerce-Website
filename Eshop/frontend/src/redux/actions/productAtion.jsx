@@ -9,7 +9,7 @@ import {
   GET_PRODUCT_DETALIS,
   GET_PRODUCT_LIKE,
   DELETE_PRODUCT,
-  UPDATE_PRODUCT
+  UPDATE_PRODUCT,
 } from "../Type";
 
 // export const createProducts = (formData) => async(dispatch) => {
@@ -54,6 +54,38 @@ export const createProducts = (formData) => async (dispatch) => {
 export const getAllProduct = () => async (dispatch) => {
   try {
     const response = await useGetData("/products");
+
+    dispatch({
+      type: GET_ALL_PRODUCT,
+      payload: response,
+    });
+  } catch (e) {
+    dispatch({
+      type: GET_ERROR,
+      payload: e.response?.data || "Error",
+    });
+  }
+};
+
+export const getSearchProduct = (word,sortWord = '') => async (dispatch) => {
+  try {
+    const response = await useGetData(`/products?keyword=${word}&sort=${sortWord}`);
+
+    dispatch({
+      type: GET_ALL_PRODUCT,
+      payload: response,
+    });
+  } catch (e) {
+    dispatch({
+      type: GET_ERROR,
+      payload: e.response?.data || "Error",
+    });
+  }
+};
+
+export const getSortProduct = (sortWord) => async (dispatch) => {
+  try {
+    const response = await useGetData(`/products?sort=${sortWord}`);
 
     dispatch({
       type: GET_ALL_PRODUCT,
