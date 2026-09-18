@@ -23,7 +23,7 @@ const ProductDetalis = () => {
 
   let item = [];
 
-  if(oneProduct.data){
+  if(oneProduct?.data){
     item = oneProduct.data;
   }else{
     item = []
@@ -33,21 +33,21 @@ const ProductDetalis = () => {
 
   // ===========================================================
 
-  const spaceficCat = useSelector((state) => state.allCategory.oneCategory);
+  const spaceficCat = useSelector((state) => state.allCategory.oneCategory||{});
 
-  console.log(spaceficCat);
+console.log("SPACEFIC CATEGORY:", spaceficCat);
 
 
 
   useEffect(()=>{
    
-    if(item.category){
+    if(item?.category){
       
       dispatch(getOneCategory(item.category))
 
       
     }
-  },[item])
+  },[item?.category,dispatch])
 
 
   

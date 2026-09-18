@@ -5,7 +5,10 @@ import RateContainer from "../../Componants/Rate/RateContainer";
 import CardContainer from "../../Componants/Products/CardContainer";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getLikeProduct, getOneProduct } from "../../redux/actions/productAtion";
+import {
+  getLikeProduct,
+  getOneProduct,
+} from "../../redux/actions/productAtion";
 
 const ProductDetalisPage = () => {
   const { id } = useParams();
@@ -17,35 +20,38 @@ const ProductDetalisPage = () => {
     dispatch(getOneProduct(id));
   }, [id]);
 
-  const oneProduct = useSelector((state) => state.allProduct.oneProduct);
+  const oneProduct = useSelector((state) => state.allProduct.oneProduct || {});
 
   let item = [];
 
   if (oneProduct.data) {
-    item = oneProduct.data;
+    item = oneProduct?.data;
   } else {
     item = [];
   }
 
   console.log(item);
 
-
   // ======================================
 
-  const productLike = useSelector((state) => state.allProduct.productLike);
+  const productLike = useSelector(
+    (state) => state.allProduct.productLike || {},
+  );
 
-
-  console.log(productLike.data);
-  
-
-
-  useEffect(()=>{
-
-    if(item.category){
-      dispatch(getLikeProduct(item.category))
+  useEffect(() => {
+    if (item.category) {
+      dispatch(getLikeProduct(item.category));
     }
+  }, [item.category, dispatch]);
 
-  },[item.category])
+  useEffect(() => {
+    
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+  
+  }, [id]);
 
   return (
     <div style={{ minHeight: "450px" }}>
@@ -53,8 +59,11 @@ const ProductDetalisPage = () => {
 
       <div className="container my-3">
         <ProductDetalis />
-        <RateContainer />
-        <CardContainer myProduct={productLike.data?.slice(0,4)} title=" المنتجات..." />
+        <RateContainer item={item} />
+        <CardContainer
+          myProduct={productLike.data?.slice(0, 4)}
+          title=" المنتجات..."
+        />
       </div>
     </div>
   );

@@ -3,10 +3,10 @@ import React from "react";
 const ProductDetalisText = ({item,category}) => {
   return (
     <div>
-      <h4 className="sub-text">{category.name}</h4>
+      <h4 className="sub-text">{category?.name|| ""}</h4>
       <div className="sub-tile">
         {item.title}
-        <p className="card-rate">{item.ratingAvg}</p>
+        <p className="card-rate">{item?.ratingAvg}</p>
       </div>
       <div className="d-flex gap-2">
         <p>الماركه</p>
@@ -31,7 +31,7 @@ const ProductDetalisText = ({item,category}) => {
       </p>
       </div>
       <div className="d-flex gap-2">
-        <div className="btn btn-light">{item.price}جنيه</div>
+        <div className="btn btn-light">{item?.price}جنيه</div>
         <button className="btn btn-dark">اضف للعربه</button>
       </div>
     </div>
