@@ -1,7 +1,8 @@
 import { useDeleteData } from "../../hook/useDeleteData";
 import useGetData from "../../hook/useGetData";
 import { useInsertData } from "../../hook/useInsertData";
-import { CREATE_REVIEWS,GET_ERROR,GET_REVIEWS,DELETE_REVIEWS } from "../Type";
+import { useUpdateReview } from "../../hook/useUpdateData";
+import { CREATE_REVIEWS,GET_ERROR,GET_REVIEWS,DELETE_REVIEWS ,UPDATE_REVIEW} from "../Type";
 
 
 export const createReviews = (id,body) => async (dispatch) => {
@@ -70,6 +71,29 @@ export const deleteReview = (id) => async (dispatch) => {
 
     dispatch({
       type: DELETE_REVIEWS,
+      payload: response,
+    });
+
+     return response;
+  } catch (e) {
+       
+
+    dispatch({
+      type: GET_ERROR,
+      payload: e.response?.data || "Error",
+    });
+  }
+};
+
+export const upDateReview = (id,body) => async (dispatch) => {
+  try {
+
+
+    const response = await useUpdateReview(`reviews/${id}`,body);
+
+
+    dispatch({
+      type: UPDATE_REVIEW,
       payload: response,
     });
 

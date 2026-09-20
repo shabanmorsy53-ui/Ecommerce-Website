@@ -1,9 +1,10 @@
-import { CREATE_REVIEWS, GET_ERROR, GET_REVIEWS,DELETE_REVIEWS } from "../Type";
+import { CREATE_REVIEWS, GET_ERROR, GET_REVIEWS,DELETE_REVIEWS ,UPDATE_REVIEW} from "../Type";
 
 const initial = {
   review: [],
   personReview: [],
   deleteReview: [],
+  upDateReview: [],
   loading: true,
 };
 
@@ -26,6 +27,12 @@ const reviewReducer = (state = initial, action) => {
       return {
         ...state,
         deleteReview: action.payload,
+        loading: false,
+      };
+    case UPDATE_REVIEW:
+      return {
+        ...state,
+        upDateReview: action.payload,
         loading: false,
       };
 

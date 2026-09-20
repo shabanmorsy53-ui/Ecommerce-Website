@@ -20,7 +20,7 @@ const HomePages = () => {
   const allProdcut = useSelector((state) => state.allProduct.allProduct);
   let slicedProduct = [];
   
-  if(allProdcut.data){
+  if(allProdcut?.data){
     slicedProduct = allProdcut.data.slice(0,4)
   }else{
     slicedProduct = []
@@ -28,7 +28,7 @@ const HomePages = () => {
   
   
 
-  console.log(allProdcut.data);
+  
 
 
   return (

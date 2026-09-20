@@ -15,7 +15,7 @@ const UserRate = ({ item }) => {
 
   const [value, setValue] = useState(4.5);
   const [comment, setComment] = useState("");
-  const [loading, setLoading] = useState(true);
+  
 
   const [userName, setUserName] = useState("");
 
@@ -28,7 +28,7 @@ const UserRate = ({ item }) => {
 
 
   const review = useSelector((state) => state.allReview.review);
-  console.log(review);
+  
 
   
 
@@ -44,7 +44,6 @@ const onSubmit = async () => {
   }
 
   try {
-    setLoading(true);
 
     await dispatch(
       createReviews(id, {
@@ -52,9 +51,15 @@ const onSubmit = async () => {
         rating: value,
       })
     );
-    notify("تم اضافة التعليق");
     await dispatch(getReview(id));
-    await dispatch(getOneProduct(id));
+    
+    notify("تم اضافة التعليق");
+
+    setTimeout(() => {
+      
+      window.location.reload()
+    }, 2000);
+    
 
     setComment("");
 
@@ -66,8 +71,6 @@ const onSubmit = async () => {
     );
     await dispatch(getOneProduct(id));
     setComment('')
-  } finally {
-    setLoading(false);
   }
 };
 
