@@ -10,11 +10,15 @@ import {
 } from "../../redux/actions/wishlistAction";
 import { toast, ToastContainer } from "react-toastify";
 
-const ProductCard = ({ item, favP }) => {
+const ProductCard = ({ item, favP = [] }) => {
   console.log(favP);
   console.log(item);
 
+  console.log("PRODUCT CARD RENDER");
+
   let fav = favP.some((fitem) => fitem === item._id);
+
+  const user = JSON.parse(localStorage.getItem("user"));
 
   const [favImg, setFavImg] = useState(heart);
   const [isFav, setIsFav] = useState(fav);
@@ -24,6 +28,8 @@ const ProductCard = ({ item, favP }) => {
   const dispatch = useDispatch();
 
   const handleWishlist = () => {
+    if (user?.role !== "user") return;
+
     if (isFav === true) {
       deleteWishlist();
     } else {

@@ -16,8 +16,8 @@ const HomeCategory = () => {
     dispatch(getAllCategory());
   }, []);
 
-  const data = useSelector((state) => state.allCategory.category);
-  const loading = useSelector((state) => state.allCategory.loading);
+  const data = useSelector((state) => state.allCategory?.category);
+  const loading = useSelector((state) => state.allCategory?.loading);
 
   const colors = [
     "#ffd3e8",
@@ -28,8 +28,13 @@ const HomeCategory = () => {
     "#ffd3e8",
   ];
 
-  console.log(data);
-  console.log(loading);
+  let category33 = [];
+
+  if(data){
+    category33 = data
+  }else{
+    category33 = []
+  }
 
   return (
     <div>
@@ -42,8 +47,8 @@ const HomeCategory = () => {
 
         <div className="row d-flex justify-content-between">
           {loading === false ? (
-            data ? (
-              data
+            category33 ? (
+              category33
                 .slice(0, 5)
                 .map((item, index) => (
                   <CategoryCard

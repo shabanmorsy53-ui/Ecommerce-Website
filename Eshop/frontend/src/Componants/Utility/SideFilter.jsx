@@ -15,8 +15,8 @@ const SideFilter = () => {
     get();
   }, []);
 
-  const allCat = useSelector((state) => state.allCategory.category);
-  const allBrand = useSelector((state) => state.allBrand.brand);
+  const allCat = useSelector((state) => state.allCategory?.category);
+  const allBrand = useSelector((state) => state.allBrand?.brand);
 
   console.log(allCat);
   console.log(allBrand);
@@ -54,6 +54,14 @@ const SideFilter = () => {
     }
   }
 
+  let cat = [];
+
+  if(allCat){
+    cat = allCat
+  }else{
+    cat = []
+  }
+
 
   return (
     <div>
@@ -66,8 +74,8 @@ const SideFilter = () => {
             <div>الكل</div>
           </div>
 
-          {allCat ? (
-            allCat?.map((cat, index) => (
+          {cat ? (
+            cat?.map((cat, index) => (
               <div className="d-flex gap-2 my-2 align-items-center">
                 <input type="checkbox"  value={cat._id} onChange={checked}/>
                 <div>{cat.name}</div>

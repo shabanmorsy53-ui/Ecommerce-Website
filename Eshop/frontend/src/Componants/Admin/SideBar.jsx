@@ -37,9 +37,15 @@ const SideBar = () => {
             </Link>
 
             <Link to='/admin/addproduct' style={{textDecoration:'none', color:'black'}}>
-            <div className='child border-bottom border-1 border-dark  text-center p-3'>
-                اضف منتج
-            </div>
+                <div className='child border-bottom border-1 border-dark  text-center p-3'>
+                    اضف منتج
+                </div>
+            </Link>
+
+            <Link to='/admin/addCoupon' style={{textDecoration:'none', color:'black'}}>
+                <div className='child border-bottom border-1 border-dark  text-center p-3'>
+                    اضف كوبون
+                </div>
             </Link>
 
         </div>

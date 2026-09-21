@@ -3,27 +3,39 @@ import SubTitle from '../Utility/SubTitle'
 import ProductCard from './ProductCard'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllWishlist } from '../../redux/actions/wishlistAction'
+
 // import cardImage from '../../Images/labtop.png'
 
 const CardContainer = ({title,btnTitle,myProduct}) => {
+
+  const user = JSON.parse(localStorage.getItem('user'))
+
+
 
   const dispatch = useDispatch();
 
   const [favProd , setFavProd] = useState([])
   const [loading , setLoading] = useState(true)
 
+  console.log("CARD CONTAINER RENDER");
 
   useEffect(()=>{
 
-    const get = async ()=> {
-      setLoading(true)
-      await dispatch(getAllWishlist())
-      setLoading(false)
+    console.log("GET WISHLIST EFFECT");
+
+    if(user.role === 'user'){
+      
+      const get = async ()=> {
+        setLoading(true)
+        await dispatch(getAllWishlist())
+        setLoading(false)
+      }
+  
+      get()
     }
 
-    get()
 
-  },[])
+  },[user.role,dispatch])
 
   const wishList = useSelector((state) => state.allWishlist.allwishlist || {});
 
@@ -48,7 +60,8 @@ const CardContainer = ({title,btnTitle,myProduct}) => {
               {
                 myProduct ? (
                   myProduct.map((item,index)=>(
-                    <ProductCard item={item} favP={favProd}/>
+                    <ProductCard item={item} 
+                    favP={user.role === "user" ? favProd : []}/>
                     
                   ))
                 ) : null

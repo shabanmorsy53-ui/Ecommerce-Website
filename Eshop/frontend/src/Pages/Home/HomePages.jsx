@@ -17,7 +17,7 @@ const HomePages = () => {
   },[])
 
 
-  const allProdcut = useSelector((state) => state.allProduct.allProduct);
+  const allProdcut = useSelector((state) => state.allProduct?.allProduct);
   let slicedProduct = [];
   
   if(allProdcut?.data){
