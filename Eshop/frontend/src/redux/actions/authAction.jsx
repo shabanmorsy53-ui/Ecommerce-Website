@@ -1,6 +1,7 @@
 import { useInsertData } from "../../hook/useInsertData";
-import { useUpdateData } from "../../hook/useUpdateData";
-import {CREATE_NEW_USER,LOGIN_USER,FORGET_PASSWORD,VERFIY_PASSWORD,RESET_PASSWORD} from "../Type";
+import { useUpdateData, useUpdateReview } from "../../hook/useUpdateData";
+import {CREATE_NEW_USER,LOGIN_USER,NEW_USER_DATA,GET_CURRENT_USER,NEW_USER_PASSWORD,FORGET_PASSWORD,VERFIY_PASSWORD,RESET_PASSWORD, GET_ERROR} from "../Type";
+import useGetData, { useGetDataWithToken } from '../../hook/useGetData'
 
 
 
@@ -24,7 +25,73 @@ export const createNewUser = (data) => async(dispatch) => {
     }catch(e){
 
         dispatch({
-            type: CREATE_NEW_USER ,
+            type: GET_ERROR ,
+            payload : e.response,
+        })
+    }
+}
+
+export const getCurrentUser = () => async(dispatch) => {
+
+    try{
+
+        const response = await useGetDataWithToken('/users/getMe/');
+  
+
+        dispatch({
+            type: GET_CURRENT_USER,
+            payload : response,
+            loading : true
+        })
+
+    }catch(e){
+
+        dispatch({
+            type: GET_ERROR ,
+            payload : e.response,
+        })
+    }
+}
+
+export const upDateUserPass = (body) => async(dispatch) => {
+
+    try{
+
+        const response = await useUpdateReview('/users/changeMyPassword/',body);
+  
+
+        dispatch({
+            type: NEW_USER_PASSWORD,
+            payload : response,
+            loading : true
+        })
+
+    }catch(e){
+
+        dispatch({
+            type: GET_ERROR ,
+            payload : e.response,
+        })
+    }
+}
+
+export const upDateUserData = (body) => async(dispatch) => {
+
+    try{
+
+        const response = await useUpdateReview('users/deActiveMyProfile/',body);
+  
+
+        dispatch({
+            type: NEW_USER_DATA,
+            payload : response,
+            loading : true
+        })
+
+    }catch(e){
+
+        dispatch({
+            type: GET_ERROR ,
             payload : e.response,
         })
     }
