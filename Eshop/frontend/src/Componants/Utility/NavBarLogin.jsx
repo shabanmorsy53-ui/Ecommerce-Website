@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import logo from "../../Images/logo.png";
 import login from "../../Images/login.png";
 import cart from "../../Images/cart.png";
+import { getCartItem } from "../../redux/actions/cartAction";
+import { useDispatch, useSelector } from "react-redux";
 
 const NavBarLogin = () => {
   const [user, setUser] = useState("");
@@ -19,24 +21,50 @@ const NavBarLogin = () => {
     window.location.href = "/login";
   };
 
-  const [searchWord, setSearchWord] = useState(localStorage.getItem('word') || '');
+  const [searchWord, setSearchWord] = useState(
+    localStorage.getItem("word") || "",
+  );
 
-  useEffect(()=>{
-    
-    if(searchWord){
-      localStorage.setItem('word',searchWord)
-    }else{
-      localStorage.removeItem('word')
+  useEffect(() => {
+    if (searchWord) {
+      localStorage.setItem("word", searchWord);
+    } else {
+      localStorage.removeItem("word");
     }
 
-    window.dispatchEvent(new Event('searchChanged'))
-  },[searchWord])
+    window.dispatchEvent(new Event("searchChanged"));
+  }, [searchWord]);
 
+  // =============cart length =================
 
-  console.log(searchWord);
-    
-  
+  const [loading, setLoading] = useState(true);
+  const [cartLength, setCartLength] = useState(0);
 
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const get = async () => {
+      setLoading(true);
+      await dispatch(getCartItem());
+      setLoading(false);
+    };
+
+    get();
+  }, [cartLength]);
+
+  const cartRes = useSelector((state) => state.allCart.cartitem);
+
+  console.log(cartRes);
+
+  useEffect(() => {
+    if (loading === false) {
+      if (cartRes.status === "success") {
+        setCartLength(cartRes.numOfCartItems);
+      }
+    }
+  }, [loading]);
+
+  console.log(cartLength);
 
   return (
     <div>
@@ -66,7 +94,7 @@ const NavBarLogin = () => {
                 type="search"
                 placeholder="بحث"
                 aria-label="Search"
-                onChange={(e)=> setSearchWord(e.target.value)}
+                onChange={(e) => setSearchWord(e.target.value)}
                 value={searchWord}
               />
             </form>
@@ -94,7 +122,7 @@ const NavBarLogin = () => {
                     <ul className="dropdown-menu">
                       <li>
                         <a className="dropdown-item" href="/admin/product">
-                           لوحة التحكم
+                          لوحة التحكم
                         </a>
                       </li>
                       <li>
@@ -136,10 +164,14 @@ const NavBarLogin = () => {
 
               <a
                 href="/cart"
-                className="d-flex justify-content-center mt-2 align-items-center gap-1 text-white"
+                className="d-flex justify-content-center mt-2 align-items-center gap-1 position-relative text-white"
               >
                 <img src={cart} className="login-img" alt="" />
                 <p>العربه</p>
+                <span class="position-absolute top-0 start-0 translate-middle badge rounded-pill bg-danger">
+                  {cartLength}
+                  <span class="visually-hidden">unread messages</span>
+                </span>
               </a>
             </div>
           </div>
