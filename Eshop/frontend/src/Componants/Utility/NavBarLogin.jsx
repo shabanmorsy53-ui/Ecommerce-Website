@@ -42,15 +42,24 @@ const NavBarLogin = () => {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    const get = async () => {
+useEffect(() => {
+  const get = async () => {
+    if (user?.role === "user") {
       setLoading(true);
-      await dispatch(getCartItem());
-      setLoading(false);
-    };
 
-    get();
-  }, [cartLength]);
+      try {
+        await dispatch(getCartItem());
+      } finally {
+        setLoading(false);
+      }
+    } else {
+      setLoading(false);
+      setCartLength(0);
+    }
+  };
+
+  get();
+}, [user, dispatch]);
 
   const cartRes = useSelector((state) => state.allCart.cartitem);
 

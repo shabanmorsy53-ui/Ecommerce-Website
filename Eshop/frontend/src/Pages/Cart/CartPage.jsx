@@ -7,7 +7,8 @@ import { getCartItem } from "../../redux/actions/cartAction";
 const CartPage = () => {
   const [loading, setLoading] = useState(true);
   const [cartItem, setCartItem] = useState([]);
-  const [cartLength, setCartLength] = useState(0);
+  const [totalPrice, setTotalPrice] = useState('');
+  
 
   const dispatch = useDispatch();
 
@@ -29,6 +30,7 @@ const CartPage = () => {
     if (loading === false) {
       if (cartRes.status === "success") {
         setCartItem(cartRes.data.cartItems);
+        setTotalPrice(cartRes.data.totalPrice)
       } else {
         setCartItem([]);
       }
@@ -62,7 +64,7 @@ const CartPage = () => {
         </div>
 
         <div className="col-sm-12 me-auto col-md-4  p-2 mx-4">
-          <CheckOut />
+          <CheckOut totalPrice={totalPrice}/>
         </div>
       </div>
     </div>
