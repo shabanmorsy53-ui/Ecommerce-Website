@@ -13,6 +13,8 @@ const UserAddress = () => {
 
   const allAddress = useSelector((state) => state.alladdress.alladdress);
 
+  console.log(allAddress);
+
   
 
   return (

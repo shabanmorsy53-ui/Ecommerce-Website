@@ -44,6 +44,10 @@ const CartItem = ({ item }) => {
   };
 
   const changedQuantity = async () => {
+    if(item.quantity === upDateQu){
+        notify('قم بتغيير الكميه اولا')
+        return
+    }
     setUpDateLoading(true)
     await dispatch(
       upDateCartItemQ(item._id, {

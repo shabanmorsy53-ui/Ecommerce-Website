@@ -8,6 +8,7 @@ const CartPage = () => {
   const [loading, setLoading] = useState(true);
   const [cartItem, setCartItem] = useState([]);
   const [totalPrice, setTotalPrice] = useState('');
+  const [numsOfCartItem, setNumsOfCartItem] = useState(0);
   
 
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ const CartPage = () => {
       if (cartRes.status === "success") {
         setCartItem(cartRes.data.cartItems);
         setTotalPrice(cartRes.data.totalPrice)
+        setNumsOfCartItem(cartRes.numOfCartItems)
       } else {
         setCartItem([]);
       }
@@ -64,7 +66,7 @@ const CartPage = () => {
         </div>
 
         <div className="col-sm-12 me-auto col-md-4  p-2 mx-4">
-          <CheckOut totalPrice={totalPrice}/>
+          <CheckOut totalPrice={totalPrice} nums={numsOfCartItem}/>
         </div>
       </div>
     </div>
