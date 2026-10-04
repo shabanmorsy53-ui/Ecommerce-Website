@@ -46,7 +46,7 @@ const UserAllOrder = () => {
 
       {myOrder.length >= 1 ? (
         myOrder.map((item, index) => (
-          <UserAllOrderContainer key={index} nums={index} item={item} />
+          <UserAllOrderContainer key={index} nums={index} item={item.cartItems} />
         ))
       ) : (
         <div
@@ -62,6 +62,8 @@ const UserAllOrder = () => {
           <h5>لايوجد طلبات</h5>
         </div>
       )}
+
+      
     </div>
   );
 };

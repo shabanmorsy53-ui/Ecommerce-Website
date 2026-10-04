@@ -6,6 +6,7 @@ import deleteIcon from "../../Images/delete.png";
 const UserAllOrderContainer = ({ item, nums }) => {
   console.log(item);
   return (
+
     <div className="payment1 p-2 rounded-2 my-3" style={{backgroundColor:'#faefef77'}}>
       <div className="mb-3 border-bottom border-1  p-2 d-flex justify-content-between">
         <span> طلب رفم # {nums + 1}</span>

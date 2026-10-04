@@ -1,6 +1,9 @@
 import {
+  CHANGE_DELIVER_ORDER,
+  CHANGE_PAY_ORDER,
     CREATE_CASH_ORDER,
   GET_ERROR,
+  GET_ONE_ORDER,
   GET_USER_ORDER,
 
 } from "../Type";
@@ -8,6 +11,9 @@ import {
 const initial = {
   cashorder: [],
   getorder: [],
+  oneorder: [],
+  pay: [],
+  deliver: [],
   loading: true,
 };
 
@@ -23,6 +29,24 @@ const orderReducer = (state = initial, action) => {
       return {
         ...state,
         getorder: action.payload,
+        loading: false,
+      };
+    case GET_ONE_ORDER:
+      return {
+        ...state,
+        oneorder: action.payload,
+        loading: false,
+      };
+    case CHANGE_PAY_ORDER:
+      return {
+        ...state,
+        pay: action.payload,
+        loading: false,
+      };
+    case CHANGE_DELIVER_ORDER:
+      return {
+        ...state,
+        deliver: action.payload,
         loading: false,
       };
     case GET_ERROR:

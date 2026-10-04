@@ -2,33 +2,30 @@ import React from "react";
 import mobile from "../../Images/mobile.png";
 import deleteIcon from "../../Images/delete.png";
 
-
-const AdminOrderDetalisCard = () => {
+const AdminOrderDetalisCard = ({ item,num }) => {
+  console.log(item);
   return (
-    <div className="d-flex gap-2 mb-3 ps-3 bg-light">
-      <div style={{ height: "100%" }}>
-        <img src={mobile} height="100%" width="110px" alt="" />
-      </div>
+    <div className="d-flex gap-2 mb-3 ps-3 ">
+    
+        <img
+          src={`http://localhost:8000/products/${item.product.imageCover}`}
+          height="100%"
+          style={{margin:'auto'}}
+          width="110px"
+          alt=""
+        />
+      
 
       <div className="w-100">
         <div className="d-flex justify-content-between">
-          <h5 className="slider-title fs-5">طلب رقم #33456</h5>
-          <span className="d-flex align-items-center gap-2 ">
-            <img height="20px" width="20px" src={deleteIcon} alt="" />
-            <p className="mb-0 slider-title fs-6">ازاله</p>
-          </span>
+          <h5 className="slider-title fs-5">طلب رقم #{num+1}</h5>
         </div>
 
         <div className="w-100">
-          <p>ايفون برو ماكس ممتاز جدا في الاستعمال</p>
+          <p>{item.product.title}</p>
         </div>
 
-        <div className="d-flex gap-2">
-          <p>الماركه:</p>
-          <span className="fw-bold fs-5">ابل</span>
-        </div>
-
-        <div className="box"></div>
+        <div className="box" style={{backgroundColor:`${item.color}`}}></div>
 
         <div className="d-flex justify-content-between my-2">
           <div className="d-flex gap-2">
@@ -37,10 +34,11 @@ const AdminOrderDetalisCard = () => {
               type="number"
               className="form-control"
               style={{ width: "60px", height: "35px" }}
+              value={item.quantity}
             />
           </div>
 
-          <span>300 جنيه</span>
+          <span>{item.price} جنيه</span>
         </div>
       </div>
     </div>
